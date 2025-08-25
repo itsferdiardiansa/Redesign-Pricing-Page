@@ -99,7 +99,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
                 </span>
               </>
             ) : (
-              <Badge>Available only with Annual subscription</Badge>
+              <Badge>{plan.info}</Badge>
             )}
           </div>
 

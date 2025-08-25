@@ -42,6 +42,7 @@ const pricingPlans = [
     valueStack: planFeatures,
     totalValue: 3500,
     cta: { label: 'Contact sales', link: '/checkout' },
+    info: 'Only for annual subscription',
     guarantee: '30-day money-back guarantee',
   },
 ]

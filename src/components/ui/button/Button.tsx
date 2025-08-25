@@ -40,18 +40,27 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     if (asChild && isDisabled) {
+      const child = React.Children.only(children)
+
+      let text = child
+      if (
+        React.isValidElement(child) &&
+        (child.props as React.PropsWithChildren)?.children
+      ) {
+        text = (child.props as React.PropsWithChildren).children
+      }
+
       return (
         <span
           className={cn(buttonVariants({ variant: 'disabled' }), className)}
           aria-disabled="true"
         >
-          {children}
+          {text}
         </span>
       )
     }
 
     const Comp = asChild ? Slot : 'button'
-
     return (
       <Comp
         ref={ref}
@@ -59,8 +68,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ variant: isDisabled ? 'disabled' : variant }),
           className,
         )}
-        disabled={!asChild ? isDisabled : undefined}
-        aria-disabled={isDisabled || undefined}
+        disabled={isDisabled && !asChild}
+        aria-disabled={isDisabled}
         {...props}
       >
         {children}

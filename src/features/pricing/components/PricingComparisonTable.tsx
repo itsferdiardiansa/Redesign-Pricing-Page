@@ -67,7 +67,7 @@ const PricingComparisonPlanHeader = ({
               <span className="period">Billed {billingCycle}</span>
             </>
           ) : (
-            <Badge>Only for annual subscriptions</Badge>
+            <Badge>{plan.info}</Badge>
           )}
         </div>
 

@@ -75,7 +75,7 @@ export const PricingComparisonMobile = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Badge>Only for annual subscriptions</Badge>
+                  <Badge>{plan.info}</Badge>
                 )}
               </AccordionContent>
             </AccordionItem>

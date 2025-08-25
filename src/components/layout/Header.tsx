@@ -21,7 +21,7 @@ export const Header = () => {
           <div className="hamburger-icon">
             <RxHamburgerMenu />
             <div className="ham-nav-inactive">
-              <img
+              {/* <img
                 alt="Close icon"
                 title="Close icon"
                 tabIndex={1}
@@ -32,7 +32,7 @@ export const Header = () => {
                 data-nimg={1}
                 src="/close.svg"
                 style={{ color: 'transparent' }}
-              />
+              /> */}
               <ul>
                 <Link href="/">
                   <li className="">Home</li>
