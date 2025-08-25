@@ -1,9 +1,9 @@
-type FormatStyle = "currency" | "decimal" | "unit"
+type FormatStyle = 'currency' | 'decimal' | 'unit'
 
 export function formatCurrency(
   price: number,
-  formatStyle: FormatStyle = "currency",
-  currency: string = 'usd'
+  formatStyle: FormatStyle = 'currency',
+  currency: string = 'usd',
 ): string {
   return new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 0,

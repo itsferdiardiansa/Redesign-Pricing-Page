@@ -1,4 +1,4 @@
-import pricingPlans from "@/constants/pricing-plans"
+import pricingPlans from '@/constants/pricing-plans'
 
 export type PricingValueItem = {
   name: string
@@ -16,4 +16,4 @@ export type FilteredValueStack = {
   label?: string
 }
 
-export type PricingPlan = typeof pricingPlans[number]
+export type PricingPlan = (typeof pricingPlans)[number]
