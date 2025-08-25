@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { formatCurrency } from '@/utils'
 import { getPlanPrice } from '../_utils/computed-price'
 import { cn } from '@/utils/cls'
+import { Badge } from '@/components/ui/badge'
 
 const PricingComparisonHeader = ({
   billingCycle,
@@ -38,32 +39,48 @@ const PricingComparisonPlanHeader = ({
 }) => {
   const { amount, discount } = plan.price
   const { finalPrice } = getPlanPrice(amount, discount, billingCycle)
+  const isPlanSelectable =
+    plan.id !== 3 || (plan.id === 3 && billingCycle !== 'monthly')
 
   return (
     <th className={cn(plan.isRecommended && 'highlighted')}>
       {plan.isRecommended && (
         <div className="feature-col-badge">Recommended</div>
       )}
-      <div className="feature-col-plan">
+      <div
+        className={cn(
+          'feature-col-plan',
+          !isPlanSelectable && 'vertical-center',
+        )}
+      >
         <div className="price">
           <span>{plan.name}</span>
-          <p>
-            <span className="currency">{plan.price.currency}</span>
-            <span className="amount-price">
-              {formatCurrency(finalPrice, 'decimal')}
-            </span>
-          </p>
-          <span className="period">Billed {billingCycle}</span>
+
+          {isPlanSelectable ? (
+            <>
+              <p>
+                <span className="currency">{plan.price.currency}</span>
+                <span className="amount-price">
+                  {formatCurrency(finalPrice, 'decimal')}
+                </span>
+              </p>
+              <span className="period">Billed {billingCycle}</span>
+            </>
+          ) : (
+            <Badge>Only for annual subscriptions</Badge>
+          )}
         </div>
 
-        <div>
-          <Button
-            variant={plan.isRecommended ? 'primary' : 'outlinePrimary'}
-            asChild
-          >
-            <Link href={plan.cta.link}>{plan.cta.label}</Link>
-          </Button>
-        </div>
+        {(plan.id !== 3 || (plan.id === 3 && billingCycle !== 'monthly')) && (
+          <div>
+            <Button
+              variant={plan.isRecommended ? 'primary' : 'outlinePrimary'}
+              asChild
+            >
+              <Link href={plan.cta.link}>{plan.cta.label}</Link>
+            </Button>
+          </div>
+        )}
       </div>
     </th>
   )

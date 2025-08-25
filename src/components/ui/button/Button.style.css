@@ -26,3 +26,8 @@
   background-color: var(--light);
 	color: var(--neutral);
 }
+.btn.btn-disabled {
+  cursor: not-allowed;
+  background-color: var(--disabled);
+  opacity: .9;
+}

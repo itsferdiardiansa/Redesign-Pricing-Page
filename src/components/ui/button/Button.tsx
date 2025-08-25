@@ -12,6 +12,7 @@ const buttonVariants = cva('btn', {
       primary: 'btn-primary',
       secondary: 'btn-secondary',
       outlinePrimary: 'btn-outline-primary',
+      disabled: 'btn-disabled',
     },
   },
   defaultVariants: {
@@ -23,17 +24,47 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  isDisabled?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      asChild = false,
+      isDisabled = false,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    if (asChild && isDisabled) {
+      return (
+        <span
+          className={cn(buttonVariants({ variant: 'disabled' }), className)}
+          aria-disabled="true"
+        >
+          {children}
+        </span>
+      )
+    }
+
     const Comp = asChild ? Slot : 'button'
+
     return (
       <Comp
         ref={ref}
-        className={cn(buttonVariants({ variant }), className)}
+        className={cn(
+          buttonVariants({ variant: isDisabled ? 'disabled' : variant }),
+          className,
+        )}
+        disabled={!asChild ? isDisabled : undefined}
+        aria-disabled={isDisabled || undefined}
         {...props}
-      />
+      >
+        {children}
+      </Comp>
     )
   },
 )

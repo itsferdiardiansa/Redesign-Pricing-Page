@@ -42,6 +42,9 @@
   justify-content: space-between;
   gap: 12px;
 }
+.pricing-table thead th .feature-col-plan.vertical-center {
+  justify-content: center;
+}
 .pricing-table thead th .feature-col-badge {
   position: absolute;
   top: -26px;
@@ -56,6 +59,7 @@
 .pricing-table thead th .feature-col-plan .price {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px
 }
 

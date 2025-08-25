@@ -10,6 +10,7 @@ import {
   PricingValueItem,
 } from '@/features/pricing/types/Pricing.types'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { cn, formatCurrency } from '@/utils'
 import { getPlanPrice } from '../_utils/computed-price'
 import '../styles/PricingCard.style.css'
@@ -28,6 +29,8 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
     billingCycle,
   )
 
+  const isPlanSelectable =
+    plan.id !== 3 || (plan.id === 3 && billingCycle !== 'monthly')
   const featureTitle =
     plan.id === 1
       ? 'Key features include'
@@ -78,18 +81,26 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
           <div className="plan-description">{plan.description}</div>
 
           <div className="plan-price">
-            <div className="price-detail">
-              {strikePrice && (
-                <span className="strikethrough-price">
-                  {formatCurrency(strikePrice)}
-                </span>
-              )}
+            {isPlanSelectable ? (
+              <>
+                <div className="price-detail">
+                  {strikePrice && (
+                    <span className="strikethrough-price">
+                      {formatCurrency(strikePrice)}
+                    </span>
+                  )}
 
-              <span className="amount-price">{formatCurrency(finalPrice)}</span>
-            </div>
-            <span className="period">
-              {billingCycle === 'monthly' ? '/month' : '/year'}
-            </span>
+                  <span className="amount-price">
+                    {formatCurrency(finalPrice)}
+                  </span>
+                </div>
+                <span className="period">
+                  {billingCycle === 'monthly' ? '/month' : '/year'}
+                </span>
+              </>
+            ) : (
+              <Badge>Available only with Annual subscription</Badge>
+            )}
           </div>
 
           {hasDiscount && (
@@ -100,6 +111,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
         <div className="plan-cta">
           <Button
             variant={plan.isRecommended ? 'secondary' : 'primary'}
+            isDisabled={!isPlanSelectable}
             asChild
           >
             <Link href={plan.cta.link}>{plan.cta.label}</Link>

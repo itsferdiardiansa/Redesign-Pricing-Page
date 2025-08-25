@@ -15,6 +15,7 @@ import {
 import { getPlanPrice } from '../_utils/computed-price'
 import { cn, formatCurrency } from '@/utils'
 import '../styles/PricingComparisonMobile.style.css'
+import { Badge } from '@/components/ui/badge'
 
 export const PricingComparisonMobile = () => {
   const { billing: billingCycle } = usePricing()
@@ -25,6 +26,8 @@ export const PricingComparisonMobile = () => {
         {pricingPlans.map((plan, index) => {
           const { amount, discount } = plan.price
           const { finalPrice } = getPlanPrice(amount, discount, billingCycle)
+          const isPlanSelectable =
+            plan.id !== 3 || (plan.id === 3 && billingCycle !== 'monthly')
 
           return (
             <AccordionItem key={plan.id} value={index} data-value={plan.id}>
@@ -62,14 +65,18 @@ export const PricingComparisonMobile = () => {
                   })}
                 </ul>
 
-                <div className="plan-cta">
-                  <Button variant="primary" asChild>
-                    <Link href={plan.cta.link}>
-                      Pay {formatCurrency(finalPrice)} /
-                      {billingCycle === 'monthly' ? 'month' : 'year'}
-                    </Link>
-                  </Button>
-                </div>
+                {isPlanSelectable ? (
+                  <div className="plan-cta">
+                    <Button variant="primary" asChild>
+                      <Link href={plan.cta.link}>
+                        Pay {formatCurrency(finalPrice)} /
+                        {billingCycle === 'monthly' ? 'month' : 'year'}
+                      </Link>
+                    </Button>
+                  </div>
+                ) : (
+                  <Badge>Only for annual subscriptions</Badge>
+                )}
               </AccordionContent>
             </AccordionItem>
           )
