@@ -123,7 +123,7 @@ pnpm dev
 ```
 
 ---
-### How the feature plan works
+### How the plan works
 #### Features on PricingCard
 ![https://i.ibb.co.com/hxvhRMm5/Frame-1000004122.png](https://i.ibb.co.com/hxvhRMm5/Frame-1000004122.png)
 Each object represents a list in the stack card section. This object also assigns a feature to the location where it is placed.
