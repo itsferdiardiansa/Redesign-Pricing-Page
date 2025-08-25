@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Slot, Slottable } from "@radix-ui/react-slot"
+import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/utils"
 import "./Button.style.css"
@@ -13,6 +13,7 @@ const buttonVariants = cva(
       variant: {
         primary: "btn-primary",
         secondary: "btn-secondary",
+        outlinePrimary: "btn-outline-primary",
       },
     },
     defaultVariants: {
@@ -25,7 +26,6 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  variant: "primary" | "secondary"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

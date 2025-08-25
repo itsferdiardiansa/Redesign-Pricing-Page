@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, MouseEventHandler } from "react"
+import { ReactNode, MouseEventHandler, useRef } from "react"
 import { useAccordionContext } from "./Accordion"
 import { cn } from "@/utils/cls"
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5"
@@ -11,30 +11,38 @@ type AccordionTriggerProps = {
 }
 
 export const AccordionTrigger = ({ children, className }: AccordionTriggerProps) => {
-  const { openItem, setOpenItem, type, collapsible } = useAccordionContext()
+  const { openItems, toggleItem } = useAccordionContext()
+  const triggerRef = useRef<HTMLDivElement | null>(null)
 
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    const parent = (e.currentTarget.parentElement as HTMLElement)
-    const value = parent.dataset.value
+  const handleClick: MouseEventHandler<HTMLDivElement> = () => {
+    const e = triggerRef.current
+
+    if (!e) return
+    const parent = e.parentElement as HTMLElement
+    const value = parent?.dataset.value
     if (!value) return
-    if (type === "single") {
-      if (openItem === value && collapsible) setOpenItem(null)
-      else setOpenItem(value)
-    }
+    toggleItem(value)
   }
 
+  // const parentValue = (typeof window !== "undefined"
+  //   ? (document?.activeElement?.parentElement as HTMLElement)?.dataset.value
+  //   : null) || null
+  
+    // Always false
+  const parentValue = triggerRef.current?.parentElement?.dataset.value
+  const isOpen = parentValue ? openItems.includes(parentValue) : false
+  
   return (
-    <div 
-      className={cn("accordion-trigger", className)} 
+    <div
+      ref={triggerRef}
+      className={cn("accordion-trigger", className)}
       onClick={handleClick}
       role="button"
     >
       {children}
-      <span className="arrow">{openItem ? (
-        <IoChevronUpOutline />
-      ) : (
-        <IoChevronDownOutline />
-      )}</span>
+      <span className="arrow">
+        {isOpen ? <IoChevronUpOutline /> : <IoChevronDownOutline />}
+      </span>
     </div>
   )
 }

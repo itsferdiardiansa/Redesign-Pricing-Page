@@ -1,0 +1,63 @@
+.section-stacks {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-stacks .section {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 40px 0;
+}
+.section-stacks .section .section-header {
+  width: 90%;
+}
+.section-stacks .section .section-header .section-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: var(--text-base);
+  margin-bottom: 16px;
+}
+.section-stacks .section .section-header .section-badge .icon {
+  fill: var(--primary);
+}
+.section-stacks .section .section-header .section-title {
+  font-size: var(--text-2xl);
+  text-align: center;
+}
+.section-stacks .section .section-content {
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .section-stacks .section {
+    padding: 80px 0;
+    gap: 60px;
+  }
+
+  .section-stacks .section .section-header .section-title {
+    font-size: var(--text-4xl);
+  }
+}
+@media (min-width: 1024px) {
+  .section-stacks .section.section-column {
+    flex-direction: row;
+  }
+  .section-stacks .section.section-column .section-content {
+    width: 100%;
+  }
+
+  .section-stacks .section .section-content {
+    overflow-x: visible;
+  }
+  
+  .section-stacks .section.section-column .section-header .section-title {
+    text-align: left;
+  }
+
+  .section-stacks .section.section-column .section-header .section-badge {
+    justify-content: flex-start;
+  }
+}

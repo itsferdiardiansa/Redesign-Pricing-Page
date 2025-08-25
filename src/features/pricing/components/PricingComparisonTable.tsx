@@ -4,11 +4,11 @@ import Link from "next/link"
 import pricingPlans from "@/constants/pricing-plans"
 import planFeatures from "@/constants/plan-features"
 import { BillingCycle } from "@/context/PricingContext"
-import { PricingValueItem } from "@/features/types/Pricing.types"
-import { formatCurrency } from "@/utils/number-formatter"
+import { PricingValueItem } from "@/features/pricing/types/Pricing.types"
+import { Button } from "@/components/ui/button"
+import { formatCurrency } from "@/utils"
 import { getPlanPrice } from "../_utils/computed-price"
 import { cn } from "@/utils/cls"
-import { Button } from "@/components/ui/button"
 
 const PricingComparisonHeader = ({ billingCycle }: { billingCycle: BillingCycle }) => (
   <thead>
@@ -53,7 +53,7 @@ const PricingComparisonPlanHeader = ({
         </div>
 
         <div>
-          <Button variant="primary" asChild>
+          <Button variant={plan.isRecommended ? "primary" : "outlinePrimary"} asChild>
             <Link
               href={plan.cta.link}
             >

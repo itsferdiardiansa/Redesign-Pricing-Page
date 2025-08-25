@@ -18,6 +18,10 @@
   color: var(--light);
   background-color: var(--primary);
 }
+.btn.btn-outline-primary {
+  color: var(--primary);
+  outline: 1px solid var(--primary);
+}
 .btn.btn-secondary {
   background-color: var(--light);
 	color: var(--neutral);

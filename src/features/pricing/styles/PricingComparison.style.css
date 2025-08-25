@@ -7,6 +7,7 @@
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0px;
+  margin-top: 48px;
 }
 
 .pricing-table th,
@@ -18,8 +19,9 @@
 .pricing-table thead {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 1;
   background-color: var(--light);
+  box-shadow: 0px 1px 0 rgba(249, 250, 251, .9);
 }
 
 .pricing-table thead th {
@@ -61,30 +63,16 @@
   font-weight: 600;
   padding: 16px;
   font-size: 2rem;
+  border-bottom: 0;
 }
 .pricing-table tfoot .total-col {
   text-align: left !important;
   padding: 24px 0;
 }
-
-.cta-btn {
-  width: 100%;
-  padding: 12px 24px;
-  color: #ffffff;
-  background-color: #0070E0;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  border-radius: 5px;
-}
-
 .feature-col {
   text-align: left!important;
   font-weight: 500;
   min-width: 200px;
-  /* position: sticky; */
   left: 0;
   z-index: 1;
   padding: 12px;

@@ -4,7 +4,7 @@ import Link from "next/link"
 import pricingPlans from "@/constants/pricing-plans"
 import planFeatures from "@/constants/plan-features"
 import { usePricing } from "@/context/PricingContext"
-import { PricingValueItem } from "@/features/types/Pricing.types"
+import { PricingValueItem } from "@/features/pricing/types/Pricing.types"
 import { getPlanPrice } from "../_utils/computed-price"
 import { cn, formatCurrency } from "@/utils"
 import { Button } from "@/components/ui/button"
@@ -30,14 +30,7 @@ export const PricingComparisonMobile = () => {
             <AccordionItem key={plan.id} value={plan.id} data-value={plan.id}>
               <AccordionTrigger className={cn(plan.isRecommended && "highlighted")}>
                 <div className="plan-header">
-                  {/* {plan.isRecommended && (
-                    <span className="badge">Recommended</span>
-                  )} */}
                   <span className="font-medium">{plan.name}</span>
-                  {/* <p className="text-sm text-muted-foreground">
-                    <span className="currency">{plan.price.currency}</span>
-                    {formatCurrency(finalPrice, "decimal")} / {billingCycle}
-                  </p> */}
                 </div>
               </AccordionTrigger>
 

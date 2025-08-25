@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import { Geist, Geist_Mono, Sora } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
+import { BaseLayout } from "@/components/layout/BaseLayout";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sora.variable}`}>
-        <div className="container">
+        <BaseLayout>
           {children}
-        </div>
+        </BaseLayout>  
       </body>
     </html>
   );

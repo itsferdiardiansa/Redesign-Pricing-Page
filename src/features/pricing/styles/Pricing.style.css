@@ -16,8 +16,7 @@
 }
 
 .pricing-plans-header .pricing-plans-title {
-  font-size: var(--text-3xl);
-  font-weight: 600;
+  font-size: var(--text-2xl);
   text-align: center;
 }
 
@@ -26,10 +25,6 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
   gap: 16px;
   margin-bottom: 80px;
-}
-
-.pricing-comparison {
-  overflow-x: visible;
 }
 
 .embla {
@@ -56,11 +51,13 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 540px) {
   .embla__slide {
     flex: 0 0 60%;
   }
   
+}
+@media (min-width: 768px) {
   .pricing-plans-header .pricing-plans-title {
     font-size: var(--text-4xl);
   }

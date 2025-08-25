@@ -1,17 +1,18 @@
+@import "@/styles/legacy-layout.css";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
-  /* --primary: #0070E0; */
-  --primary: #821eae;
+  --primary: #0070E0;
+  /* --primary: #821eae; */
   --light: #ffffff;
   --neutral: #000000;
-  --muted: #96B1CD;
+  --muted: #A3A3A3;
   --gray: #f4f4f5;
 
-  --border-default: #4F6169;
-  /* --border-muted: #96B1CD; */
-  --border-muted: #f4f4f5;
+  --border-default: #E5E7EB;
+  --border-muted: #D1D5DB;
   --border-neutral: #000000;
   --border-light: #ffffff;
   
@@ -44,7 +45,7 @@
 
   /* Breakpoints */
   --breakpoint-xs: 320px;
-  --breakpoint-sm: 640px;
+  --breakpoint-sm: 540px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;

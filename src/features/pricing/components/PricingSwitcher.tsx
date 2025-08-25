@@ -9,6 +9,9 @@ export const PricingSwitcher = () => {
 
   return (
     <div className="pricing-switcher">
+      <div className="pricing-label">
+        Bill me
+      </div>
       <div className="pricing-switcher-container">
         <div 
           className={cn("pricing-switcher-option", billing === "monthly" && "active")}
