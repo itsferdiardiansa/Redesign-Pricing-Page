@@ -123,7 +123,32 @@ pnpm dev
 ```
 
 ---
+### How the feature plan works
+#### Features on PricingCard
+![https://i.ibb.co.com/hxvhRMm5/Frame-1000004122.png](https://i.ibb.co.com/hxvhRMm5/Frame-1000004122.png)
+Each object represents a list in the stack card section. This object also assigns a feature to the location where it is placed.
+
+- To change/add, you need to pay attention to the values ​​within the "tiers" of an object.
+- For example, if you want to change the "Unlimited Appointments..." feature to tier 3, you simply need to add/change the following format:
+```json
+  {
+       tierid: 3, // represents the plan
+       value: 200 // represents the price/value
+   },
+   ...
+```
+- However, if you want to remove the feature from tier 3, you simply need to remove it from the "tiers" array.
+- All the value will reflect to total value on Comparison Table based on their plan
+
+#### Plan Tier
+![https://i.ibb.co.com/cXwZ6cyk/Frame-1000004123.png](https://i.ibb.co.com/cXwZ6cyk/Frame-1000004123.png)
+- Key number 1 indicates where the price listed on the card and comparison table is taken from. You can change this to suit your needs.
+- Key number 2 is the discount for the plan itself.
+- Key number 3 is the call to action button. You can customize the action you want to take by setting the value in the "link": "..." to match the next action.
+- Key number 4 displays the feature stack/list.
+---
 
 ### Need Help or Revisions?
 If you run into any issues while setting this up or if there are parts that need to be revised, please let me know and I’ll make the necessary adjustments.
+
 
