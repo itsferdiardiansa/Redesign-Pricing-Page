@@ -1,0 +1,29 @@
+.pricing-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--light);
+}
+
+.pricing-switcher-container {
+  border: 1px solid var(--border-default);
+  border-radius: 50px;
+  padding: 4px;
+  display: flex;
+}
+
+.pricing-switcher-option {
+  padding: 8px 20px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--neutral);
+  font-weight: 500;
+}
+
+.pricing-switcher-option.active {
+  background: var(--primary);
+  color: var(--light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

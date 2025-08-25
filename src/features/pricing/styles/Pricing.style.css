@@ -1,0 +1,84 @@
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  overflow: hidden;
+  gap: 64px;
+}
+
+.pricing-plans-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.pricing-plans-header .pricing-plans-title {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  text-align: center;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.pricing-comparison {
+  overflow-x: visible;
+}
+
+.embla {
+  width: 100%;
+}
+
+.embla__viewport {
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  gap: 16px;
+}
+
+.embla__slide {
+  flex: 0 0 70%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 320px) {
+  .embla__slide {
+    flex: 0 0 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 60%;
+  }
+  
+  .pricing-plans-header .pricing-plans-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .embla__slide {
+    flex: unset;
+  }
+
+  .pricing-plans-header {
+    flex-direction: row;
+    gap: 0;
+    margin-bottom: 60px;
+  }
+}

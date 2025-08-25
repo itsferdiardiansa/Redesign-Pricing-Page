@@ -1,0 +1,34 @@
+.pricing-comparison-mobile {
+  display: block;
+}
+
+.pricing-comparison-mobile .plan-features {
+  list-style: none;
+}
+.pricing-comparison-mobile .plan-features .plan-feature {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-muted);
+  display: grid;
+  grid-template-columns: 1fr 50%;
+  gap: 12px;
+  align-items: center;
+  font-size: var(--text-sm);
+}
+.pricing-comparison-mobile .plan-features .plan-feature:last-child {
+  border-bottom: 0;
+}
+.pricing-comparison-mobile .plan-features .plan-feature .plan-feature-name {
+  font-weight: 600;
+}
+.pricing-comparison-mobile .plan-features .plan-feature .plan-feature-value {
+  text-align: center;
+}
+.pricing-comparison-mobile .plan-cta {
+  margin-top: 16px;
+}
+
+@media (min-width: 1280px) {
+  .pricing-comparison-mobile {
+    display: none;
+  }
+}

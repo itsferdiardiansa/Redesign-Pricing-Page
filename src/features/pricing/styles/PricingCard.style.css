@@ -1,0 +1,132 @@
+.pricing-card {
+	height: 100%;
+  background: var(--light);
+  padding: 24px;
+  position: relative;
+  border: 1px solid var(--border-default);
+	color: var(--neutral);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.pricing-card.recommended {
+  background-color: var(--primary);
+  color: var(--light);
+}
+.pricing-card.recommended .plan-description {
+  color: var(--light);
+}
+.pricing-card.recommended .plan-price * {
+  color: var(--light)!important;
+}
+.pricing-card.recommended .pricing-card-bottom .value-stack .stack-item .check-icon {
+	border-color: var(--light);
+}
+.pricing-card.recommended .pricing-card-bottom .value-stack .stack-item .check-icon::after {
+  color: var(--icon-light);
+}
+.pricing-card .recommended-badge {
+	position: absolute;
+	top: -24px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--light);
+	color: var(--primary);
+	padding: 12px 24px;
+	border-radius: 5px;
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.25);
+	font-size: 0.9rem;
+	font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* ===== PRICING CARD TOP ===== */
+.pricing-card-top {
+	height: 290px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.pricing-card-top .plan-name {
+	font-size: var(--text-3xl);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.pricing-card-top .plan-description {
+	color: var(--muted);
+	font-size: var(--text-base);
+	margin-bottom: 16px;
+}
+
+.pricing-card-top .plan-price {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.pricing-card-top .plan-price .price-detail {
+	font-size: var(--text-xl);
+	display: flex;
+	align-items: baseline;
+	gap: 16px;
+}
+.pricing-card-top .plan-price .price-detail .strikethrough-price {
+	text-decoration: line-through;
+	color: var(--muted);
+}
+.pricing-card-top .plan-price .price-detail .amount-price {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.pricing-card-top .plan-price .period {
+	font-size: 1rem;
+	font-weight: 400;
+}
+.pricing-card-top .plan-discount-info {
+	font-size: .95rem;
+	margin-top: 16px;
+}
+.pricing-card-top .plan-cta {
+  margin-top: 28px;
+}
+/* ===== END OF PRICING CARD TOP ===== */
+
+/* ===== PRICING CARD BOTTOM ===== */
+.pricing-card-bottom .plan-feature-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.pricing-card-bottom .value-stack .stack-item {
+	display: flex;
+	align-items: center;
+	padding: 8px 0;
+}
+.pricing-card-bottom .value-stack .stack-item .check-icon {
+	width: 23px;
+	height: 23px;
+  border: 2px solid var(--border-neutral);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 15px;
+	flex-shrink: 0;
+}
+.pricing-card-bottom .value-stack .stack-item .check-icon::after {
+	content: '✓';
+	color: var(--icon-neutral);
+	font-weight: 900;
+	font-size: 12px;
+}
+.pricing-card-bottom .value-stack .stack-item .stack-text {
+	flex: 1;
+	font-size: 0.95rem;
+}
+
+/* @media (min-width: 768px) {
+	.pricing-card-top {
+		height: 290px;
+	}
+} */
