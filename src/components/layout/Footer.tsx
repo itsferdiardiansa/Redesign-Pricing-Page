@@ -1,5 +1,5 @@
-import Image from "next/image"
-import BrandLogo from "@/assets/brand-logo.webp"
+import Image from 'next/image'
+import BrandLogo from '@/assets/brand-logo.webp'
 
 export const Footer = () => {
   return (
@@ -25,7 +25,7 @@ export const Footer = () => {
             decoding="async"
             data-nimg={1}
             className="location"
-            style={{ color: "transparent" }}
+            style={{ color: 'transparent' }}
             src="https://turnbnb.com/_next/image?url=%2Flocation.png&w=48&q=75"
           />
           <span className="footer-heading">USA</span>
@@ -37,7 +37,10 @@ export const Footer = () => {
             </p>
           </address>
           <div className="social-icons">
-            <a href="https://www.linkedin.com/company/turnbnb/" title="Linkedin">
+            <a
+              href="https://www.linkedin.com/company/turnbnb/"
+              title="Linkedin"
+            >
               <Image
                 alt="Linkedin icon"
                 loading="lazy"
@@ -45,11 +48,14 @@ export const Footer = () => {
                 height={30}
                 decoding="async"
                 data-nimg={1}
-                style={{ color: "transparent" }}
+                style={{ color: 'transparent' }}
                 src="https://turnbnb.com/linkedin-original.svg"
               />
             </a>
-            <a href="https://www.instagram.com/turnbnbofficial/" title="Instagram">
+            <a
+              href="https://www.instagram.com/turnbnbofficial/"
+              title="Instagram"
+            >
               <Image
                 alt="Instagram icon"
                 loading="lazy"
@@ -57,7 +63,7 @@ export const Footer = () => {
                 height={30}
                 decoding="async"
                 data-nimg={1}
-                style={{ color: "transparent" }}
+                style={{ color: 'transparent' }}
                 src="https://turnbnb.com/instagram-original.svg"
               />
             </a>
@@ -72,7 +78,7 @@ export const Footer = () => {
                 height={30}
                 decoding="async"
                 data-nimg={1}
-                style={{ color: "transparent" }}
+                style={{ color: 'transparent' }}
                 src="https://turnbnb.com/facebook-original.svg"
               />
             </a>
@@ -102,7 +108,7 @@ export const Footer = () => {
               height={14}
               decoding="async"
               data-nimg={1}
-              style={{ color: "transparent" }}
+              style={{ color: 'transparent' }}
               src="https://turnbnb.com/_next/image?url=%2Fmail.png&w=48&q=75"
             />
             <span>
@@ -118,7 +124,7 @@ export const Footer = () => {
               height={14}
               decoding="async"
               data-nimg={1}
-              style={{ color: "transparent" }}
+              style={{ color: 'transparent' }}
               src="https://turnbnb.com/_next/image?url=%2Fphone.png&w=48&q=75"
             />
             <span>
@@ -144,6 +150,5 @@ export const Footer = () => {
         </div>
       </div>
     </section>
-
   )
 }

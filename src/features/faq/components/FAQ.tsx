@@ -1,7 +1,12 @@
 'use client'
 
-import faqData from "@/constants/faq"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import faqData from '@/constants/faq'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion'
 
 export const FAQList: React.FC = () => {
   return (
@@ -13,9 +18,7 @@ export const FAQList: React.FC = () => {
               <span className="faq-title">{faq.question}</span>
             </AccordionTrigger>
 
-            <AccordionContent>
-              {faq.answer}
-            </AccordionContent>
+            <AccordionContent>{faq.answer}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

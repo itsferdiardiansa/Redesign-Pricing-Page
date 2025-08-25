@@ -1,7 +1,7 @@
-import Image from "next/image"
-import BrandLogo from "@/assets/brand-logo.webp"
-import { RxHamburgerMenu } from "react-icons/rx"
-import Link from "next/link"
+import Link from 'next/link'
+import Image from 'next/image'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import BrandLogo from '@/assets/brand-logo.webp'
 
 export const Header = () => {
   return (
@@ -31,7 +31,7 @@ export const Header = () => {
                 decoding="async"
                 data-nimg={1}
                 src="/close.svg"
-                style={{ color: "transparent" }}
+                style={{ color: 'transparent' }}
               />
               <ul>
                 <Link href="/">
@@ -74,6 +74,5 @@ export const Header = () => {
         </div>
       </div>
     </header>
-
   )
 }

@@ -1,14 +1,18 @@
-"use client"
+'use client'
 
-import { useMemo } from "react"
-import pricingPlans from "@/constants/pricing-plans"
-import { usePricing } from "@/context/PricingContext"
-import { cn, formatCurrency } from "@/utils"
-import { FilteredValueStack, PricingPlan, PricingValueItem } from "@/features/pricing/types/Pricing.types"
-import { getPlanPrice } from "../_utils/computed-price"
-import "../styles/PricingCard.style.css"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import Link from 'next/link'
+import { useMemo } from 'react'
+import pricingPlans from '@/constants/pricing-plans'
+import { usePricing } from '@/context/PricingContext'
+import {
+  FilteredValueStack,
+  PricingPlan,
+  PricingValueItem,
+} from '@/features/pricing/types/Pricing.types'
+import { Button } from '@/components/ui/button'
+import { cn, formatCurrency } from '@/utils'
+import { getPlanPrice } from '../_utils/computed-price'
+import '../styles/PricingCard.style.css'
 
 type PricingCardProps = {
   plan: PricingPlan
@@ -18,11 +22,15 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
   const { amount, discount } = plan.price
 
   const hasDiscount = !!discount
-  const { strikePrice, finalPrice, discountLabel } = getPlanPrice(amount, discount, billingCycle)
-  
+  const { strikePrice, finalPrice, discountLabel } = getPlanPrice(
+    amount,
+    discount,
+    billingCycle,
+  )
+
   const featureTitle =
     plan.id === 1
-      ? "Key features include"
+      ? 'Key features include'
       : `${pricingPlans[plan.id - 2].name} features, plus`
 
   const filteredValueStack = useMemo(() => {
@@ -30,16 +38,20 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
 
     return plan.valueStack
       .map((feature: PricingValueItem) => {
-        const tiersSorted = [...feature.tiers].sort((a, b) => a.tierId - b.tierId)
-        const current = tiersSorted.find(t => t.tierId === plan.id)
+        const tiersSorted = [...feature.tiers].sort(
+          (a, b) => a.tierId - b.tierId,
+        )
+        const current = tiersSorted.find((t) => t.tierId === plan.id)
         if (!current) return null
 
         const firstTierId = tiersSorted[0].tierId
-        const isConstant = tiersSorted.every(t => t.value === tiersSorted[0].value)
+        const isConstant = tiersSorted.every(
+          (t) => t.value === tiersSorted[0].value,
+        )
 
         if (isConstant && plan.id !== firstTierId) return null
 
-        const prev = tiersSorted.find(t => t.tierId === prevPlanId)
+        const prev = tiersSorted.find((t) => t.tierId === prevPlanId)
         if (!prev || prev.value !== current.value) {
           return {
             id: feature.name,
@@ -55,8 +67,10 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
   }, [plan])
 
   return (
-    <div className={cn("pricing-card", plan.isRecommended && "recommended")}>
-      {plan.isRecommended && <div className="recommended-badge">Recommended</div>}
+    <div className={cn('pricing-card', plan.isRecommended && 'recommended')}>
+      {plan.isRecommended && (
+        <div className="recommended-badge">Recommended</div>
+      )}
 
       <div className="pricing-card-top">
         <div className="pricing-card-detail">
@@ -71,32 +85,24 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
                 </span>
               )}
 
-              <span className="amount-price">
-                {formatCurrency(finalPrice)}
-              </span>
+              <span className="amount-price">{formatCurrency(finalPrice)}</span>
             </div>
             <span className="period">
-              {billingCycle === "monthly" ? "/month" : "/year"}
+              {billingCycle === 'monthly' ? '/month' : '/year'}
             </span>
           </div>
 
           {hasDiscount && (
-            <div className="plan-discount-info">
-              Save {discountLabel}% off
-            </div>
+            <div className="plan-discount-info">Save {discountLabel}% off</div>
           )}
         </div>
 
         <div className="plan-cta">
-          <Button 
-            variant={plan.isRecommended ? "secondary" : "primary"} 
+          <Button
+            variant={plan.isRecommended ? 'secondary' : 'primary'}
             asChild
           >
-            <Link 
-              href={plan.cta.link}
-            >
-              {plan.cta.label}
-            </Link>
+            <Link href={plan.cta.link}>{plan.cta.label}</Link>
           </Button>
         </div>
       </div>
@@ -105,7 +111,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
         <div className="plan-feature-title">{featureTitle}</div>
 
         <div className="value-stack">
-          {filteredValueStack.map(item => (
+          {filteredValueStack.map((item) => (
             <div className="stack-item" key={item.id}>
               <div className="check-icon" />
               <div className="stack-text">

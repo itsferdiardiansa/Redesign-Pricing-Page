@@ -1,20 +1,24 @@
-"use client"
+'use client'
 
-import Link from "next/link"
-import pricingPlans from "@/constants/pricing-plans"
-import planFeatures from "@/constants/plan-features"
-import { BillingCycle } from "@/context/PricingContext"
-import { PricingValueItem } from "@/features/pricing/types/Pricing.types"
-import { Button } from "@/components/ui/button"
-import { formatCurrency } from "@/utils"
-import { getPlanPrice } from "../_utils/computed-price"
-import { cn } from "@/utils/cls"
+import Link from 'next/link'
+import pricingPlans from '@/constants/pricing-plans'
+import planFeatures from '@/constants/plan-features'
+import { BillingCycle } from '@/context/PricingContext'
+import { PricingValueItem } from '@/features/pricing/types/Pricing.types'
+import { Button } from '@/components/ui/button'
+import { formatCurrency } from '@/utils'
+import { getPlanPrice } from '../_utils/computed-price'
+import { cn } from '@/utils/cls'
 
-const PricingComparisonHeader = ({ billingCycle }: { billingCycle: BillingCycle }) => (
+const PricingComparisonHeader = ({
+  billingCycle,
+}: {
+  billingCycle: BillingCycle
+}) => (
   <thead>
     <tr>
       <th className="feature-col">Features</th>
-      {pricingPlans.map(plan => (
+      {pricingPlans.map((plan) => (
         <PricingComparisonPlanHeader
           key={plan.id}
           plan={plan}
@@ -27,16 +31,16 @@ const PricingComparisonHeader = ({ billingCycle }: { billingCycle: BillingCycle 
 
 const PricingComparisonPlanHeader = ({
   plan,
-  billingCycle
+  billingCycle,
 }: {
-  plan: typeof pricingPlans[number]
+  plan: (typeof pricingPlans)[number]
   billingCycle: BillingCycle
 }) => {
   const { amount, discount } = plan.price
   const { finalPrice } = getPlanPrice(amount, discount, billingCycle)
 
   return (
-    <th className={cn(plan.isRecommended && "highlighted")}>
+    <th className={cn(plan.isRecommended && 'highlighted')}>
       {plan.isRecommended && (
         <div className="feature-col-badge">Recommended</div>
       )}
@@ -46,19 +50,18 @@ const PricingComparisonPlanHeader = ({
           <p>
             <span className="currency">{plan.price.currency}</span>
             <span className="amount-price">
-              {formatCurrency(finalPrice, "decimal")}
+              {formatCurrency(finalPrice, 'decimal')}
             </span>
           </p>
           <span className="period">Billed {billingCycle}</span>
         </div>
 
         <div>
-          <Button variant={plan.isRecommended ? "primary" : "outlinePrimary"} asChild>
-            <Link
-              href={plan.cta.link}
-            >
-              {plan.cta.label}
-            </Link>
+          <Button
+            variant={plan.isRecommended ? 'primary' : 'outlinePrimary'}
+            asChild
+          >
+            <Link href={plan.cta.link}>{plan.cta.label}</Link>
           </Button>
         </div>
       </div>
@@ -69,14 +72,14 @@ const PricingComparisonPlanHeader = ({
 const PricingComparisonBody = () => (
   <tbody>
     {planFeatures.map((feature, index) => {
-      const values = pricingPlans.map(plan => {
+      const values = pricingPlans.map((plan) => {
         const tier = feature.tiers.find(
-          t => t.tierId === plan.id
-        ) as PricingValueItem["tiers"][number]
+          (t) => t.tierId === plan.id,
+        ) as PricingValueItem['tiers'][number]
 
         return tier
           ? tier.label
-            ? `${tier.label}${tier.value ? ` - ${formatCurrency(tier.value)}` : ""}`
+            ? `${tier.label}${tier.value ? ` - ${formatCurrency(tier.value)}` : ''}`
             : formatCurrency(tier.value)
           : null
       })
@@ -87,9 +90,9 @@ const PricingComparisonBody = () => (
           {pricingPlans.map((plan, idx) => (
             <td
               key={plan.id}
-              className={cn(plan.isRecommended && "highlighted")}
+              className={cn(plan.isRecommended && 'highlighted')}
             >
-              {!values[idx] ? "—" : values[idx]}
+              {!values[idx] ? '—' : values[idx]}
             </td>
           ))}
         </tr>
@@ -105,9 +108,9 @@ const PricingComparisonFooter = ({ totals }: { totals: number[] }) => (
       {totals.map((total, idx) => (
         <td
           key={pricingPlans[idx].id}
-          className={cn(pricingPlans[idx].isRecommended && "highlighted")}
+          className={cn(pricingPlans[idx].isRecommended && 'highlighted')}
         >
-          {total > 0 ? formatCurrency(total) : "—"}
+          {total > 0 ? formatCurrency(total) : '—'}
         </td>
       ))}
     </tr>
@@ -116,7 +119,7 @@ const PricingComparisonFooter = ({ totals }: { totals: number[] }) => (
 
 export const PricingComparisonTable = ({
   billingCycle,
-  totals
+  totals,
 }: {
   billingCycle: BillingCycle
   totals: number[]

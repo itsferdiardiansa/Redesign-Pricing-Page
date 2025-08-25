@@ -1,16 +1,19 @@
-"use client"
+'use client'
 
-import { ReactNode, MouseEventHandler, useRef } from "react"
-import { useAccordionContext } from "./Accordion"
-import { cn } from "@/utils/cls"
-import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5"
+import { ReactNode, MouseEventHandler, useRef } from 'react'
+import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5'
+import { useAccordionContext } from './Accordion'
+import { cn } from '@/utils/cls'
 
 type AccordionTriggerProps = {
   children: ReactNode
   className?: string
 }
 
-export const AccordionTrigger = ({ children, className }: AccordionTriggerProps) => {
+export const AccordionTrigger = ({
+  children,
+  className,
+}: AccordionTriggerProps) => {
   const { openItems, toggleItem } = useAccordionContext()
   const triggerRef = useRef<HTMLDivElement | null>(null)
 
@@ -24,18 +27,13 @@ export const AccordionTrigger = ({ children, className }: AccordionTriggerProps)
     toggleItem(value)
   }
 
-  // const parentValue = (typeof window !== "undefined"
-  //   ? (document?.activeElement?.parentElement as HTMLElement)?.dataset.value
-  //   : null) || null
-  
-    // Always false
   const parentValue = triggerRef.current?.parentElement?.dataset.value
   const isOpen = parentValue ? openItems.includes(parentValue) : false
-  
+
   return (
     <div
       ref={triggerRef}
-      className={cn("accordion-trigger", className)}
+      className={cn('accordion-trigger', className)}
       onClick={handleClick}
       role="button"
     >

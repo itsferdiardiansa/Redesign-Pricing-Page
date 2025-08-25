@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write 'src/**/*.{js,ts}'",
-    "format:check": "prettier --check 'src/**/*.{js,ts}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "format:check": "prettier --check 'src/**/*.{ts,tsx}'"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -36,6 +36,7 @@
     "commitlint": "^19.8.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
+    "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "prettier": "^3.6.2",
     "typescript": "^5"

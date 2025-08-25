@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { cn } from "@/utils/cls"
+import { cn } from '@/utils/cls'
 
 type AccordionItemProps = {
   value: string | number
@@ -8,12 +8,13 @@ type AccordionItemProps = {
   className?: string
 }
 
-export const AccordionItem = ({ value, children, className }: AccordionItemProps) => {
+export const AccordionItem = ({
+  value,
+  children,
+  className,
+}: AccordionItemProps) => {
   return (
-    <div
-      className={cn("accordion-item", className)}
-      data-value={value}
-    >
+    <div className={cn('accordion-item', className)} data-value={value}>
       {children}
     </div>
   )
