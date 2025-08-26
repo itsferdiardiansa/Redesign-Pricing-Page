@@ -33,10 +33,12 @@ export const useAccordionContext = () => {
 export function Accordion({
   type = 'single',
   collapsible = false,
-  defaultValue = '0',
+  defaultValue,
   children,
 }: AccordionProps) {
-  const [openItems, setOpenItems] = useState<string[]>([defaultValue])
+  const [openItems, setOpenItems] = useState<string[]>(
+    defaultValue ? [defaultValue] : [],
+  )
 
   const toggleItem = (value: string) => {
     setOpenItems((prev) => {

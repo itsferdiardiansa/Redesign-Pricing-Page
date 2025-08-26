@@ -6,10 +6,10 @@ import planFeatures from '@/constants/plan-features'
 import { BillingCycle } from '@/context/PricingContext'
 import { PricingValueItem } from '@/features/pricing/types/Pricing.types'
 import { Button } from '@/components/ui/button'
-import { formatCurrency } from '@/utils'
+import { cn, formatCurrency } from '@/utils'
 import { getPlanPrice } from '../_utils/computed-price'
-import { cn } from '@/utils/cls'
 import { Badge } from '@/components/ui/badge'
+import '../styles/PricingComparisonTable.style.css'
 
 const PricingComparisonHeader = ({
   billingCycle,

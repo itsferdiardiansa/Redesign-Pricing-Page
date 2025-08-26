@@ -1,19 +1,18 @@
 'use client'
 
-import useEmblaCarousel from 'embla-carousel-react'
 import { PricingProvider } from '@/context/PricingContext'
 import { MdElectricBolt } from 'react-icons/md'
 import { SiOpenlayers } from 'react-icons/si'
-import pricingPlans from '@/constants/pricing-plans'
-import { PricingPlan } from '@/features/pricing/types/Pricing.types'
-import { PricingCard } from './PricingCard'
 import { PricingSwitcher } from './PricingSwitcher'
 import { PricingComparison } from './PricingComparison'
 import { PricingComparisonMobile } from './PricingComparisonMobile'
+import { PricingPlanSlider } from './PricingPlanSlider'
+import { PricingPlans } from './PricingPlans'
+import { useBreakpoint } from '@/hooks/useBreakpoints'
 import '../styles/Pricing.style.css'
 
 export const Pricing = () => {
-  const [emblaRef] = useEmblaCarousel({ align: 'start', loop: false })
+  const isLgUp = useBreakpoint('lg')
 
   return (
     <PricingProvider>
@@ -28,20 +27,10 @@ export const Pricing = () => {
           </h2>
         </div>
 
-        {/* Mobile carousel */}
         <div className="section-content">
           <PricingSwitcher />
-          <div className="embla">
-            <div className="embla__viewport" ref={emblaRef}>
-              <div className="embla__container">
-                {pricingPlans.map((plan: PricingPlan, idx: number) => (
-                  <div className="embla__slide" key={idx}>
-                    <PricingCard plan={plan} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+
+          {isLgUp ? <PricingPlans /> : <PricingPlanSlider />}
         </div>
       </div>
 
@@ -57,8 +46,7 @@ export const Pricing = () => {
         </div>
 
         <div className="section-content">
-          <PricingComparison />
-          <PricingComparisonMobile />
+          {isLgUp ? <PricingComparison /> : <PricingComparisonMobile />}
         </div>
       </div>
     </PricingProvider>

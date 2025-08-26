@@ -1,7 +1,3 @@
-.pricing-comparison-mobile {
-  display: block;
-}
-
 .pricing-comparison-mobile .plan-features {
   list-style: none;
 }
@@ -25,10 +21,4 @@
 }
 .pricing-comparison-mobile .plan-cta {
   margin-top: 16px;
-}
-
-@media (min-width: 1280px) {
-  .pricing-comparison-mobile {
-    display: none;
-  }
 }

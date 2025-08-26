@@ -1,0 +1,62 @@
+.pricing-features.card {
+	height: 100%;
+  background: var(--light);
+  padding: 16px;
+  position: relative;
+  border: 1px solid var(--border-default);
+	border-radius: 12px;
+	color: var(--neutral);	
+}
+.pricing-features.recommended .value-stack .stack-item .check-icon {
+	border-color: var(--light);
+}
+.pricing-features.recommended .value-stack .stack-item .check-icon::after {
+  color: var(--icon-light);
+}
+.pricing-features .pricing-features-header {
+	font-size: var(--text-xl);
+	font-weight: 600;
+	margin-bottom: 28px;
+}
+
+.pricing-features .plan-feature-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+	font-size: var(--text-sm);
+}
+.pricing-features .value-stack .stack-item {
+	display: flex;
+	align-items: center;
+	padding: 8px 0;
+}
+.pricing-features .value-stack .stack-item .check-icon {
+	width: 23px;
+	height: 23px;
+  border: 2px solid var(--border-neutral);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 15px;
+	flex-shrink: 0;
+}
+.pricing-features .value-stack .stack-item .check-icon::after {
+	content: '✓';
+	color: var(--icon-neutral);
+	font-weight: 900;
+	font-size: 12px;
+}
+.pricing-features .value-stack .stack-item .stack-text {
+	flex: 1;
+	font-size: var(--text-sm);
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 768px) {
+	.pricing-features .plan-feature-title {
+		font-size: var(--text-base);
+	}
+	.pricing-features .value-stack .stack-item .stack-text {
+		font-size: var(--text-base);
+	}
+}

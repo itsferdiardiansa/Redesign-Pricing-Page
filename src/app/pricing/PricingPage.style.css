@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
 }
-
 .section-stacks .section {
   display: flex;
   flex-direction: column;
   gap: 48px;
   padding: 80px 0;
 }
-/* .section-stacks > * + * { */
 .section-stacks .section:nth-child(n+2) {
   padding-top: 0;
 }
@@ -52,15 +50,12 @@
   .section-stacks .section.section-column .section-content {
     width: 100%;
   }
-
   .section-stacks .section .section-content {
     overflow-x: visible;
   }
-  
   .section-stacks .section.section-column .section-header .section-title {
     text-align: left;
   }
-
   .section-stacks .section.section-column .section-header .section-badge {
     justify-content: flex-start;
   }

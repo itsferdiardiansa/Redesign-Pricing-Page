@@ -11,9 +11,11 @@ import {
 } from '@/features/pricing/types/Pricing.types'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { useBreakpoint } from '@/hooks/useBreakpoints'
 import { cn, formatCurrency } from '@/utils'
 import { getPlanPrice } from '../_utils/computed-price'
 import '../styles/PricingCard.style.css'
+import { PricingFeatures } from './PricingFeatures'
 
 type PricingCardProps = {
   plan: PricingPlan
@@ -21,6 +23,7 @@ type PricingCardProps = {
 export const PricingCard = ({ plan }: PricingCardProps) => {
   const { billing: billingCycle } = usePricing()
   const { amount, discount } = plan.price
+  const isLgUp = useBreakpoint('lg')
 
   const hasDiscount = !!discount
   const { strikePrice, finalPrice, discountLabel } = getPlanPrice(
@@ -104,7 +107,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
           </div>
 
           {hasDiscount && (
-            <div className="plan-discount-info">Save {discountLabel}% off</div>
+            <div className="plan-discount-info">Save {discountLabel}</div>
           )}
         </div>
 
@@ -119,21 +122,11 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
         </div>
       </div>
 
-      <div className="pricing-card-bottom">
-        <div className="plan-feature-title">{featureTitle}</div>
-
-        <div className="value-stack">
-          {filteredValueStack.map((item) => (
-            <div className="stack-item" key={item.id}>
-              <div className="check-icon" />
-              <div className="stack-text">
-                {item.name}
-                {item.label && ` (${item.label})`}
-              </div>
-            </div>
-          ))}
+      {isLgUp && (
+        <div className="pricing-card-bottom">
+          <PricingFeatures plan={plan} />
         </div>
-      </div>
+      )}
     </div>
   )
 }

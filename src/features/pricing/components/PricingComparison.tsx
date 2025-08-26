@@ -4,7 +4,6 @@ import pricingPlans from '@/constants/pricing-plans'
 import planFeatures from '@/constants/plan-features'
 import { usePricing } from '@/context/PricingContext'
 import { PricingComparisonTable } from './PricingComparisonTable'
-import '../styles/PricingComparison.style.css'
 
 export const PricingComparison = () => {
   const { billing: billingCycle } = usePricing()
@@ -18,7 +17,7 @@ export const PricingComparison = () => {
   )
 
   return (
-    <div className="pricing-comparison-desktop">
+    <div className="pricing-comparison">
       <PricingComparisonTable billingCycle={billingCycle} totals={totals} />
     </div>
   )
