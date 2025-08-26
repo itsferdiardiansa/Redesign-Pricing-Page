@@ -1,0 +1,9 @@
+.pricing-comparison {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .pricing-comparison {
+    display: block;
+  }
+}

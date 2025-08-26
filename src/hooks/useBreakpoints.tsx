@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
@@ -15,20 +15,21 @@ const queries: Record<Breakpoint, string> = {
 
 export const useBreakpoint = (breakpoint: Breakpoint): boolean => {
   const query = queries[breakpoint]
-  const [matches, setMatches] = useState(false)
+  const getMatch = () =>
+    typeof window !== 'undefined' ? window.matchMedia(query).matches : false
 
-  useEffect(() => {
+  const [matches, setMatches] = useState(getMatch)
+
+  useLayoutEffect(() => {
     if (typeof window === 'undefined') return
 
     const media = window.matchMedia(query)
     const handler = () => setMatches(media.matches)
 
-    handler()
+    handler() // sync once
     media.addEventListener('change', handler)
 
-    return () => {
-      media.removeEventListener('change', handler)
-    }
+    return () => media.removeEventListener('change', handler)
   }, [query])
 
   return matches

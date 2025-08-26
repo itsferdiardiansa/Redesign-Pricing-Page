@@ -2,6 +2,7 @@
 
 import { useState, createContext, useContext } from 'react'
 import './Accordion.style.css'
+import { cn } from '@/utils'
 
 type AccordionContextType = {
   openItems: string[]
@@ -13,6 +14,7 @@ type AccordionProps = {
   type?: 'single' | 'multiple'
   collapsible?: boolean
   defaultValue?: string
+  className?: string
   children: React.ReactNode
 }
 
@@ -34,6 +36,7 @@ export function Accordion({
   type = 'single',
   collapsible = false,
   defaultValue,
+  className,
   children,
 }: AccordionProps) {
   const [openItems, setOpenItems] = useState<string[]>(
@@ -59,7 +62,7 @@ export function Accordion({
     <AccordionContext.Provider
       value={{ openItems, toggleItem, type, collapsible }}
     >
-      <div className="accordion">{children}</div>
+      <div className={cn('accordion', className)}>{children}</div>
     </AccordionContext.Provider>
   )
 }

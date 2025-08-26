@@ -104,6 +104,9 @@
 /* ===== END OF PRICING CARD TOP ===== */
 
 /* ===== PRICING CARD BOTTOM ===== */
+.pricing-card-bottom {
+	display: none;
+}
 /* ===== END OF PRICING CARD BOTTOM ===== */
 
 /* === RESPONSIVE VERSION === */
@@ -122,5 +125,11 @@
 	}
 	.pricing-card-top .plan-description {
 		font-size: var(--text-base);
+	}
+}
+
+@media (min-width: 1024px) {
+	.pricing-card-bottom {
+		display: block;
 	}
 }

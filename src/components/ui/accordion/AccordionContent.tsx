@@ -2,12 +2,17 @@
 
 import { ReactNode, useEffect, useRef } from 'react'
 import { useAccordionContext } from './Accordion'
+import { cn } from '@/utils'
 
 type AccordionContentProps = {
+  className?: string
   children: ReactNode
 }
 
-export const AccordionContent = ({ children }: AccordionContentProps) => {
+export const AccordionContent = ({
+  children,
+  className,
+}: AccordionContentProps) => {
   const { openItems } = useAccordionContext()
   const contentRef = useRef<HTMLDivElement | null>(null)
 
@@ -38,7 +43,9 @@ export const AccordionContent = ({ children }: AccordionContentProps) => {
         opacity: 0,
       }}
     >
-      <div className="accordion-content-wrapper">{children}</div>
+      <div className={cn('accordion-content-wrapper', className)}>
+        {children}
+      </div>
     </div>
   )
 }

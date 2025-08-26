@@ -30,7 +30,7 @@
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 .accordion-content-wrapper {
-  padding: 16px;
+  padding: 0 16px;
   line-height: var(--leading-normal);
   font-size: var(--text-sm);
 }

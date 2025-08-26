@@ -12,8 +12,6 @@ import { useBreakpoint } from '@/hooks/useBreakpoints'
 import '../styles/Pricing.style.css'
 
 export const Pricing = () => {
-  const isLgUp = useBreakpoint('lg')
-
   return (
     <PricingProvider>
       <div className="section">
@@ -29,8 +27,8 @@ export const Pricing = () => {
 
         <div className="section-content">
           <PricingSwitcher />
-
-          {isLgUp ? <PricingPlans /> : <PricingPlanSlider />}
+          <PricingPlans />
+          <PricingPlanSlider />
         </div>
       </div>
 
@@ -46,7 +44,8 @@ export const Pricing = () => {
         </div>
 
         <div className="section-content">
-          {isLgUp ? <PricingComparison /> : <PricingComparisonMobile />}
+          <PricingComparison />
+          <PricingComparisonMobile />
         </div>
       </div>
     </PricingProvider>

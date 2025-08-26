@@ -1,4 +1,4 @@
-.plan-slider-slider {
+.plan-slider {
   width: 100%;
 }
 .plan-slider-viewport {
@@ -77,11 +77,11 @@
 }
 
 @media (min-width: 1024px) {
+  .plan-slider {
+    display: none;
+  }
   .plan-slider-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-  .plan-slider-slide {
-    flex: unset;
   }
 }
