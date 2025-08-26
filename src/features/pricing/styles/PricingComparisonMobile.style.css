@@ -20,7 +20,7 @@
   text-align: center;
 }
 .pricing-comparison-mobile .plan-cta {
-  margin-top: 16px;
+  margin: 16px 0;
 }
 
 @media (min-width: 1024px) {
